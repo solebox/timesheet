@@ -7,6 +7,14 @@ if you work crazy hours like me and hate wasting time on regulation guided lies 
 please download this and have fun
 
 
+# install
+
+just get ruby and then
+```
+gem install watir
+chmod +x timesheet.rb
+```
+
 ## oh and i almost forgot, the usage 
 Usage: ./timesheet.rb [options]
     -r, --[no-]refresh-session       refresh user session
@@ -14,4 +22,6 @@ Usage: ./timesheet.rb [options]
     -p, --password PASSWORD          your password
     -e, --enter-time ENTERTIME       the time you entered
     -x, --exit-time EXITTIME         the time you exited
+
+
 
