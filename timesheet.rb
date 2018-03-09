@@ -34,7 +34,6 @@ username = options[:username]
 password = options[:password]
 timesheet_url = "https://eu1.replicon.com/ImpervaInc/my/timesheet/current"
 timesheet_test = "https://eu1.replicon.com/ImpervaInc/my/punch"
-desktop = "https://desktop.pingone.com/Imperva/Selection?cmd=selection"
 
 enter_time = options[:enter_time] ? options[:enter_time] : "9:00"
 exit_time = options[:exit_time] ? options[:exit_time] : "19:00"
