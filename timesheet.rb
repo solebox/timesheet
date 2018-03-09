@@ -32,7 +32,6 @@ raise OptionParser::MissingArgument if options[:username].nil?
 
 username = options[:username]
 password = options[:password]
-pingone_url = "https://imperva.pingone.com"
 timesheet_url = "https://eu1.replicon.com/ImpervaInc/my/timesheet/current"
 timesheet_test = "https://eu1.replicon.com/ImpervaInc/my/punch"
 desktop = "https://desktop.pingone.com/Imperva/Selection?cmd=selection"
