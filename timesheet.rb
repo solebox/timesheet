@@ -88,12 +88,12 @@ add_punches = browser.lis(:class => /^day$/).map do |day|
     day.a(:class => "addPunchLink").wait_until(timeout: 20, &:present?)
 end
 add_punches.each do |add_punch_link|
-  #  add_punch_link.click
-  #  browser.text_field(:class => "time").set(enter_time)
-  #  browser.table(:class => "fieldTable").a(:class => "divDropdownSelectionNeeded").click
-  #  browser.ul(:class => "divDropdownListLimitedWidth").a(:text => "Work Hours").click
-  #  browser.button(:value => "Add").click
-  #  sleep 2.6
+    add_punch_link.click
+    browser.text_field(:class => "time").set(enter_time)
+    browser.table(:class => "fieldTable").a(:class => "divDropdownSelectionNeeded").click
+    browser.ul(:class => "divDropdownListLimitedWidth").a(:text => "Work Hours").click
+    browser.button(:value => "Add").click
+    sleep 2.6
 end
 
 existing_punches = browser.spans(:class => "badgePunchMissing").map do |punch|
