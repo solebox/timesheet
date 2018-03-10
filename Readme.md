@@ -19,15 +19,16 @@ Usage: ./timesheet.rb [options]
     -p, --password PASSWORD          your password
     -e, --enter-time ENTERTIME       the time you entered
     -x, --exit-time EXITTIME         the time you exited
-    -c, --company-name COMPANY       the name of your company as used by pingone
+    -o ORGANIZATION,                 the name of your organization as used by pingone
+        --organization-name
 ```
 ### first use (to get the cookies)
 ```
-./timesheet.rb -u <username> -p <password> -c <company> -r
+./timesheet.rb -u <username> -p <password> -o <organization> -r
 ```
 ### then simply
 ```
-./timesheet.rb -u <username> -p <password> -c <company>
+./timesheet.rb -u <username> -p <password> -o <organization>
 
 ```
 
