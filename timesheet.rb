@@ -78,8 +78,8 @@ else
     rescue
         puts "cant find cookies file, please try to refresh cookies"
     end
+    browser.goto timesheet_test
 end
-browser.goto timesheet_test
 sleep 2.3
 browser.goto timesheet_url
 
