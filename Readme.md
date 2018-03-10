@@ -21,6 +21,13 @@ Usage: ./timesheet.rb [options]
     -x, --exit-time EXITTIME         the time you exited
     -c, --company-name COMPANY       the name of your company as used by pingone
 ```
+### first use (to get the cookies)
+```
+./timesheet.rb -u <username> -p <password> -c <company> -r
+```
+### then simply
+```
+./timesheet.rb -u <username> -p <password> -c <company>
 
-
+```
 
