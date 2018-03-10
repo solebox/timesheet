@@ -4,7 +4,7 @@ require 'optparse'
 
 options = {}
 OptionParser.new do |opts|
-    opts.banner = "Usage: $0 [options]"
+    opts.banner = "Usage: #{$0} [options]"
 
     opts.on("-r", "--[no-]refresh-session", "refresh user session") do |r|
         options[:refresh] = r
