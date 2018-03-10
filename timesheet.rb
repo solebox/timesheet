@@ -50,24 +50,25 @@ exit_time = options[:exit_time] ? options[:exit_time] : "19:00"
 
 caps = Selenium::WebDriver::Remote::Capabilities.chrome
 caps[:chrome_options] = {detach: true}
-browser = Watir::Browser.new :chrome, desired_capabilities: caps
+#browser = Watir::Browser.new :chrome, desired_capabilities: caps
+browser = Watir::Browser.new :chrome, detach: false 
 if options[:refresh] then
     browser.cookies.clear
     browser.goto pingone_url
 
-    browser.text_field(id: 'username').wait_until_present(20).set(username)
-    browser.text_field(id: 'password').wait_until_present(20).set(password)
+    browser.text_field(id: 'username').wait_until_present(timeout: 20).set(username)
+    browser.text_field(id: 'password').wait_until_present(timeout: 20).set(password)
     sleep 2 
     browser.execute_script('window.postOk()')
 
-    browser.iframe(:id => "duo_iframe").wait_until_present(20)
+    browser.iframe(:id => "duo_iframe").wait_until_present(timeout: 20)
 
-    button = browser.iframe(:id => "duo_iframe").button(:class => "auth-button").wait_until_present(20)
+    button = browser.iframe(:id => "duo_iframe").button(:class => "auth-button").wait_until_present(timeout: 20)
     button.click
     sleep 3
-    browser.a(:class => 'ping-app').wait_until_present(20)
+    browser.a(:class => 'ping-app').wait_until_present(timeout: 20)
     sleep 3
-    browser.div("app-id"=> '31417741-9964-4301-8dc2-6a4d498831d6').wait_until_present(20).click 
+    browser.div("app-id"=> '31417741-9964-4301-8dc2-6a4d498831d6').wait_until_present(timeout: 20).click 
     browser.windows.last.use
     sleep 3
     browser.execute_script(%Q'window.location="/#{organization_capitalized}/my/timesheet/default"')
