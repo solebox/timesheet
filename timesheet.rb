@@ -38,10 +38,11 @@ raise OptionParser::MissingArgument if options[:company].nil?
 username = options[:username]
 password = options[:password]
 company = options[:company]
+company_capitalized = company.capitalize + "Inc" 
 
 pingone_url = "https://#{company}.pingone.com"
-timesheet_url = "https://eu1.replicon.com/ImpervaInc/my/timesheet/current"
-timesheet_test = "https://eu1.replicon.com/ImpervaInc/my/punch"
+timesheet_url = "https://eu1.replicon.com/#{company_capitalized}/my/timesheet/current"
+timesheet_test = "https://eu1.replicon.com/#{company_capitalized}/my/punch"
 
 enter_time = options[:enter_time] ? options[:enter_time] : "9:00"
 exit_time = options[:exit_time] ? options[:exit_time] : "19:00"
@@ -68,7 +69,7 @@ if options[:refresh] then
     browser.div("app-id"=> '31417741-9964-4301-8dc2-6a4d498831d6').wait_until_present(20).click 
     browser.windows.last.use
     sleep 3
-    browser.execute_script('window.location="/ImpervaInc/my/timesheet/default"')
+    browser.execute_script(%Q'window.location="/#{company_capitalized}/my/timesheet/default"')
     sleep 3
     browser.cookies.save(file = 'cookies')
 else
