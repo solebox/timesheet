@@ -1,10 +1,7 @@
 # timesheet automation for imperva
 ## my rant and reasoning  
+
 replicon + pingone? here is some automation
-
-if you work crazy hours like me and hate wasting time on regulation guided lies to the authorities 
-please download this and have fun
-
 
 # install
 
@@ -16,7 +13,7 @@ chmod +x timesheet.rb
 
 ## oh and i almost forgot, the usage 
 ```
-Usage: $0 [options]
+Usage: ./timesheet.rb [options]
     -r, --[no-]refresh-session       refresh user session
     -u, --username USERNAME          your username
     -p, --password PASSWORD          your password
