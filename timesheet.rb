@@ -4,7 +4,7 @@ require 'optparse'
 
 options = {}
 OptionParser.new do |opts|
-    opts.banner = "Usage: $0 [options]"
+    opts.banner = "Usage: #{$0} [options]"
 
     opts.on("-r", "--[no-]refresh-session", "refresh user session") do |r|
         options[:refresh] = r
@@ -26,12 +26,20 @@ OptionParser.new do |opts|
         options[:exit_time] = time
     end
 
+    opts.on("-c COMPANY", "--company-name COMPANY", "the name of your company as used by pingone") do |company|
+        options[:company] = company
+    end
+
 end.parse!
 raise OptionParser::MissingArgument if options[:password].nil?
 raise OptionParser::MissingArgument if options[:username].nil?
+raise OptionParser::MissingArgument if options[:company].nil?
 
 username = options[:username]
 password = options[:password]
+company = options[:company]
+
+pingone_url = "https://#{company}.pingone.com"
 timesheet_url = "https://eu1.replicon.com/ImpervaInc/my/timesheet/current"
 timesheet_test = "https://eu1.replicon.com/ImpervaInc/my/punch"
 
