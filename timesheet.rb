@@ -59,9 +59,17 @@ if options[:refresh] then
     browser.text_field(id: 'username').wait_until_present(timeout: 20).set(username)
     browser.text_field(id: 'password').wait_until_present(timeout: 20).set(password)
     sleep 2 
-    browser.execute_script('window.postOk()')
+    begin
+        browser.execute_script('window.postOk()')
+    rescue
+       puts "couldnt login , did you click ok for me?" 
+    end
 
-    browser.iframe(:id => "duo_iframe").wait_until_present(timeout: 20)
+    begin
+        browser.iframe(:id => "duo_iframe").wait_until_present(timeout: 30)
+    rescue
+        puts "cant find duo_iframe.."
+    end
 
     button = browser.iframe(:id => "duo_iframe").button(:class => "auth-button").wait_until_present(timeout: 20)
     button.click
@@ -91,12 +99,16 @@ add_punches = browser.lis(:class => /^day$/).map do |day|
     day.a(:class => "addPunchLink").wait_until(timeout: 20, &:present?)
 end
 add_punches.each do |add_punch_link|
-    add_punch_link.click
-    browser.text_field(:class => "time").set(enter_time)
-    browser.table(:class => "fieldTable").a(:class => "divDropdownSelectionNeeded").click
-    browser.ul(:class => "divDropdownListLimitedWidth").a(:text => "Work Hours").click
-    browser.button(:value => "Add").click
-    sleep 2.6
+    begin
+        add_punch_link.click
+        browser.text_field(:class => "time").set(enter_time)
+        browser.table(:class => "fieldTable").a(:class => "divDropdownSelectionNeeded").click
+        browser.ul(:class => "divDropdownListLimitedWidth").a(:text => "Work Hours").click
+        browser.button(:value => "Add").click
+        sleep 2.6
+    rescue Exception => e
+        puts e
+    end
 end
 
 existing_punches = browser.spans(:class => "badgePunchMissing").map do |punch|
@@ -104,9 +116,13 @@ existing_punches = browser.spans(:class => "badgePunchMissing").map do |punch|
 end
 
 existing_punches.each do |punch|
-    punch.click
-    sleep 1
-    browser.text_field(:class => "time").set(exit_time)
-    browser.button(:value => "Add").click
-    sleep 3.5
+    begin
+        punch.click
+        sleep 1
+        browser.text_field(:class => "time").set(exit_time)
+        browser.button(:value => "Add").click
+        sleep 3.5
+    rescue Exception => e
+        puts e
+    end
 end
