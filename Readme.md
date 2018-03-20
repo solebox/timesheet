@@ -11,6 +11,11 @@ gem install watir
 chmod +x timesheet.rb
 ```
 
+mac requires an additional install
+```
+brew install chromedriver
+```
+
 ## oh and i almost forgot, the usage 
 ```
 Usage: ./timesheet.rb [options]
